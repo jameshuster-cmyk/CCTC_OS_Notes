@@ -1,0 +1,236 @@
+foo should take an unknown number of keyword arguments then print out the manifest of boxes that belongs in each room. Fix the code in the answer block.
+
+For example:
+Test 	Result
+
+foo(**{'bathroom':[1,3,4,5],'bedroom 1':[2,6,9],'kitchen':[7,8]})
+
+Boxes, [1, 3, 4, 5], belong in the bathroom
+Boxes, [2, 6, 9], belong in the bedroom 1
+Boxes, [7, 8], belong in the kitchen
+
+def foo(**kwargs):
+    for room in kwargs:
+        print(f'Boxes, {kwargs[room]}, belong in the {room}')
+        
+Continuously read strings from a user until an empty string is entered.
+
+Store all strings in a list.
+
+Sort the the list in alphabetical order and then print it.
+
+Example input:
+I
+really
+love
+python
+
+You should print:
+
+['I', 'love', 'python', 'really']
+
+goallst = []
+while True:
+    strang = input()
+    if strang:
+        goallst.append(strang)
+    else:
+        break
+#print(goallst)    
+x = sorted(goallst, key=str.lower)
+print(x)
+
+Sort the list provided in lst in ascending order using any sorting method you like. 
+
+NOTE: the variable lst must contain the final sorted list.
+
+lst= [10,8,50,99,4,1,50,0]
+
+Print the list
+
+lst= [10,8,50,99,4,1,50,0]
+x = sorted(lst)
+print(x)
+
+Sort the list of strings in true alphabetical order.
+lst = ['computers','are','Cool']
+ 
+
+Print the sorted list.
+
+lst = ['computers','are','Cool']
+x = sorted(lst, key = str.lower)
+print(x)
+
+Sort the list of strings from the shortest to the longest saved in the variable short_long.
+
+Sort the list of strings from the longest to the shortest saved in the variable long_short.
+
+Print each new list on separate lines.
+
+lst = ['computers','are','Cool']
+
+lst = ['computers','are','Cool']
+short_long = sorted(lst, key=len)
+long_short = sorted(lst, key=len,reverse=True)
+print(short_long)
+print(long_short)
+
+Use python to produce code below that will perform the following:
+    Create a function called infinitearguments that will:
+    Print to standard output all positional arguments, in the order received, on separate lines.
+    Followed immediately by all keyword arguments in the form keyword=value in keyword alphabetic order.
+    
+def infinitearguments(*args,**kwargs):
+    for arg in args:
+        print(f'{arg}')
+    lst = []    
+    for key in kwargs:
+        lst.append(f'{key}={kwargs[key]}')
+    x = sorted(lst)
+    #print(x)
+    for y in x:
+        print(y)
+
+Read all lines from file in filepath and return a list of all lines in case-insensitive ASCII order. Remove all linebreaks before sorting.
+
+You can use the following file for testing purposes: file1.txt
+
+def sort_ascii(filepath):
+    with open(filepath, 'r') as inf:
+        fc = inf.read()
+        lines = fc.split('\n')
+        #print(lines)
+        lst = []
+        for line in lines:
+            lst.append(line)
+        sortlines = sorted(lst,key=str.lower)
+        
+        return(sortlines)
+        
+Read all lines from file in filepath and return a list of all lines sorted longest to shortest. Remove all linebreaks before sorting.
+
+You can use the following file for testing: file1.txt
+
+def sort_length(filepath):
+    with open(filepath, 'r') as inf:
+        fc = inf.read()
+        lines = fc.split('\n')
+        
+        lst = []
+        for line in lines:
+            lst.append(line)
+        sortlst= sorted(lst, key=len, reverse=True)
+        return sortlst
+        
+Read all lines from file in filepath and return a list of all lines sorted numerically by the number at character positions 9 to 14 in each line. (Hint: Note the difference between character positions and index positions)
+
+Remove all line breaks before sorting.
+
+Example: The embedded number is 561234 below.
+
+Here is a561234 long line of text from the file.
+
+You can use act29.txtfor testing.
+
+def sorter(list):
+    return list[9:15:1]  
+
+def sort_embedded(filepath):
+    with open(filepath, 'r') as inf:
+        fc = inf.read()
+        lines = fc.split('\n')
+        lst = []
+        for line in lines:
+            lst.append(line)
+    sortlst = sorted(lst, key=sorter)
+    return(sortlst)
+    
+class ServiceMember:
+    
+    def __init__(self, service, name, rank, mos):
+        self.service = service
+        self.name = name
+        self.rank = rank
+        self.mos = mos
+
+    def changeMOS(self, mos):
+        self.mos = mos
+    
+    def changeRank(self, rank):
+        self.rank = rank
+
+    def __str__(self):
+        return(f'Service: {self.service}, Name: {self.name}, Rank: {self.rank}, MOS: {self.mos}')
+        
+Build a simple class called Dog.
+
+The class should initialize every instance of Dog created to start with the following:
+Attribute 	Value of attribute:
+name 	Fido
+tricks 	empty list
+
+
+
+Build a function named change_name that accepts a parameter. The parameter provided will be used to overwrite the dog's initialized name.
+
+Build another function named new_trick that accepts a parameter. The parameter should be appended to the empty list of tricks that each dog is initialized with.
+
+Build a conversion to string function (hint: Think of the double underscore) that returns a string in the following format:
+"My dog's name is __. __ can perform the following tricks: __"      (NOTE: Fill in the blank lines with the dog name and list of tricks)    
+
+class Dog:
+    
+    def __init__(self, name='Fido', tricks=[]):
+        self.name= name
+        self.tricks= tricks
+    def change_name(self, name):
+        self.name = name
+    def new_trick(self, trick):
+        self.tricks.append(trick)
+    def __str__(self):
+        return(f"My dog's name is {self.name}. {self.name} can perform the following tricks: {self.tricks}")   
+        
+Create a class called Car. When initializing a Car instance, the user must provide the year, make, model, color, trim, and transmission type, in that order. The class should also include a conversion to string function that returns a string formatted in the example output provided below (NOTE: the format must be the same to include all whitespaces).
+
+For example, calling car1 = Car('2024','Honda','Civic','White','EX','Automatic')
+
+and 
+
+print(car1) should return:
+
+Year: 2024
+Make: Honda
+Model: Civic
+Color: White
+Trim: EX
+Transmission: Automatic
+
+class Car:
+    def __init__(self, year, make, model, color, trim, transmission):
+        self.year = year
+        self.make= make
+        self.model = model
+        self.color = color
+        self.trim = trim
+        self.transmission = transmission
+    def __str__(self):
+        return(f'Year: {self.year}\nMake: {self.make}\nModel: {self.model}\nColor: {self.color}\nTrim: {self.trim}\nTransmission: {self.transmission}') 
+        
+Create a class named Chest that can store a large number of items in to a list for an explorer. When initializing a Chest instance, it can store a variable number of items. The chest has a function called add that can store an additional random number of items. It also has a function called drop that can remove a variable number of items from the chest. The empty function removes all the items inside the chest. When you print the chest instance, it will return Chest: [itemX, itemY, itemZ].
+
+For example, by calling chest1 = Chest('swords', 'bows', 'daggers') and then print(chest1), it will return Chest: ['swords', 'bows', 'daggers'].
+
+class Chest:
+    def __init__(self, *items):
+        self.items = list(items)
+    def add(self,*item):
+        self.items.extend(item)
+    def drop(self,*items):
+        for item in items:
+            if item in self.items:
+                self.items.remove(item)
+    def empty(self):
+        self.items.clear()
+    def __str__(self):
+        return(f'Chest: {self.items}')

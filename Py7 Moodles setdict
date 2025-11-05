@@ -1,0 +1,201 @@
+Write a script to iterate through a set and print each item of the set on a separate line.
+
+s = {1,2,3,4,5,6,7}
+for item in s:
+    print(item)
+    
+Write a script to add 100 to the set defined below and then iterate through the set and add the numbers together. Print the sum.
+
+s = {12,15,18,20,25}
+s.add(100)
+print(sum(list(s)))
+
+Write a script to find and print the difference between the two provided sets. In other words, what is found in s1 that is not found in s2?
+
+s1 = {3,4,5,6,7,8}
+s2 = {8,4,3,2,1,9}
+print(s1.difference(s2))
+
+Write a script to find and print the intersection between the two provided sets. 
+s1 = {3,4,5,6,7,8}
+s2 = {8,4,3,2,1,9}
+
+print(s1.intersection(s2))
+
+From the dictionary below, write a script to print the value for key n2.
+nums = {"n1": 1, "n2": 2, "n3": 3}
+
+print(nums['n2'])
+
+Write a script using a dictionary method to print a dictionary values list using the dictionary provided.
+
+names = {"name1": "Smith", "name2": "Jones", "name3": "Anderson"}
+print(names.values())
+
+Create a dictionary using the key value pairs in the table below, iterate through the following dictionary named di, and print the key and the value.
+key 	value
+'key1' 	1
+'key2' 	2
+'key3' 	3
+'key4' 	55
+
+Output: 
+key1 1
+key2 2
+key3 3
+key4 55
+
+di = {'key1':1,'key2':2,'key3':3,'key4':55}
+for key in di:
+    print(key, di[key])
+    
+Given a function named find_keys with a single parameter book (a dictionary with strings as both keys and values), return a list containing all the values from the dictionary.
+
+ HINT: You do NOT want a dict_values data type. You want a simple list data type with the values found in the dictionary
+ 
+def find_keys(book):
+    booklst = list(book.values())
+    return booklst
+    
+Given a function named toddlers that takes one parameter fruits (a dictionary where keys are fruit names and values are their prices as strings), return a string that reads: "The total price of your fruits is $X.XX", where X.XX is the sum of the values from the fruits dictionary.
+
+For example, given the dictionary {"apple": "$2.99", "strawberries": "$3.99", "grapes": "$2.49"}, the return string should read:
+"The total price of your fruits is $9.47."  
+
+def toddlers(fruits):
+    strippedtotal = 0.0
+    for money in fruits.values():
+        price = float(money.replace('$',''))
+        strippedtotal = strippedtotal + price
+        
+    return(f'The total price of your fruits is ${strippedtotal:.2f}.')
+    
+Given a function named add_elements with three parameters:
+
+1.  dogs (a dictionary where the keys are dog breeds as strings and values are lists of colors)
+Example:  dogs = {'german shepherd': ['black', 'brown'], 'pitbull': ['red', 'blue'], 'labrador': ['white', 'chocolate']}
+
+2.  breed (a string representing a dog breed)
+Example:  breed = 'german shepherd'
+
+3.  colors (a list of colors)
+Example:  colors = ['sable','white']
+ 
+Task:
+The function will return the dogs dictionary where the values in the dogs dictionary for the specified breed are updated to include the new items from the colors list.
+
+Example:
+dogs = {'german shepherd': ['black', 'brown'], 'pitbull': ['red', 'blue'], 'labrador': ['white', 'chocolate']}
+ 
+add_elements(dogs, 'german shepherd', ['sable','white'])
+ 
+Returns:
+{'german shepherd': ['black', 'brown', 'sable', 'white'], 'pitbull': ['red', 'blue'], 'labrador': ['white', 'chocolate']}
+    
+def add_elements(dogs, breed, colors):
+    dogs[breed] = dogs[breed] + colors
+    return(dogs)
+    
+    #def add_elements(dogs, breed, colors):
+    #x = dogs[breed]
+    #y = x + colors
+    #dogs[breed] = y
+    #return(dogs)   
+    
+Write a function named name_game that takes one parameter fname, a file of names, separated by line breaks, and return a dictionary where the key is the first letter of the name and the value is the first instance of a name that begins with that first letter.
+
+For example, if file contains:
+Allison
+Adam
+Bob
+Betty
+Candice
+Charles
+Xavier
+ 
+
+Output:
+{"A": "Allison, "B": "Bob", "C": "Candice", "X": "Xavier"}   
+    
+def name_game(fname):
+    with open(fname, 'r') as txt:
+        fc = txt.read()
+        words = fc.split('\n')
+        dicty = {}
+        for names in words:
+            if names != '':
+                if names[0] not in dicty.keys():
+                    dicty[names[0]] = names
+        return dicty 
+    
+Write a Python script to combine the following dictionaries to create a new one. Print the new dictionary.
+dic1={1:10, 2:20}
+dic2={3:30, 4:40}
+dic3={5:50,6:60}
+
+Output: {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}
+
+Hint: What dictionary methods might be available to use?  
+    
+dic1={1:10, 2:20}
+dic2={3:30, 4:40}
+dic3={5:50,6:60}
+dic4 = {}
+dic4.update(dic1)
+dic4.update(dic2)
+dic4.update(dic3)
+print(dic4)
+    
+Complete the function below to perform the following:
+    fname is a file containing words that are separated by at least one character of whitespace.
+    A list of words is provided as the parameter words.
+    Return a list of all the words found in the file that are NOT contained in the list of words in parameter.
+
+You can use act24.txt as a test file to complete this challenge.
+
+Example: 
+diffwords('act24.txt', ['this', 'is', 'a', 'list', 'of', 'words'])
+
+Returns:  ['in', 'file', 'the'] 
+
+def diffwords(fname, words):
+    with open(fname, 'r') as txt:
+        fc = txt.read()
+        testlist = fc.split()
+        set1 = set(testlist)
+        set2 = set(words)
+        return set1.difference(set2)
+
+Count the occurrences of each word in the file: act25.txt.
+
+Create a dictionary that contains each word in the file as a key and the value for each key will contain the number of times each words is found in the file. Words will be separated by one or more whitespace characters spread over multiple lines.
+
+Return the dictionary.
+Example:
+the file contains the following sentence:  a dog jumped a fence
+
+the returned dictionary would contain:
+{'a':2, 'dog':1, 'jumped':1, 'fence':1}
+    
+def count_words(filepath):
+    with open (filepath, 'r') as txt:
+        fc = txt.read()
+        wordlist1 = fc.strip().split() 
+#ensured all \n are stripped and then
+#splits on the spaces to create a list of all the individual words      
+        dicty = {}
+        for goalwords in wordlist1:
+            dicty[goalwords] = wordlist1.count(goalwords)
+            
+        return dicty    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

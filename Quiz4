@@ -1,0 +1,159 @@
+Define a function called morePower that takes two parameters, both of which should be integers.  The function should return the first parameter raised to the second parameter.
+
+def morePower(par1,par2):
+    return pow(par1,par2)
+    
+Define a function called findBigger that takes two parameters, both of which should be integers.  The function should compare the two numbers and return First if the first number is bigger, Second if the second number is bigger, and Equal if the numbers are equal.
+
+def findBigger(int1,int2):
+    if int1 > int2:
+        return 'First'
+    elif int1 == int2:
+        return 'Equal'
+    else:
+        return 'Second'
+        
+Define a function called myRange that takes a variable number of arguments, but no more than 3.  The function should return a list of integers that approximates the range function.  If the number of arguments is 1, then the function should return a list of integers starting at 0 and increments by 1 up to one less than the argument. If the number of arguments is 2, then the function should return a list of integers starting at the first argument and increments by 1 up to one less than the second argument.  If the number of arguments is 3, then the function should return a list of integers starting at the first argument and increments by the third argument going up to one less than the second argument.  If there are more than 4 arguments the function should return Too many arguments.
+
+def myRange(*args):
+    if len(args) == 1:
+        return list(range(0,args[0]))
+    elif len(args) ==2:
+        return list(range(args[0],args[1]))
+    elif len(args) ==3:
+        return list(range(args[0],args[1],args[2]))
+    else:
+        return 'Too many arguments'
+        
+Define a function called milPhone that takes one parameter (a string).  The function should check that the parameter only contains letters (i.e. one word).  If the parameter does not contain only letters, then return the string Argument must only be letters. If the parameter is in the correct form, then return a string where each letter has been replaced with its military phonetic equivalent and there is a space between each.  The returned string should be lowercase.
+
+Sample output:
+milPhone('hello hello') --> Argument must only be letters
+milPhone('hello') --> hotel echo lima lima oscar
+
+milDict = {'a': 'alpha', 'b':'bravo', 'c':'charlie', 'd':'delta', 'e':'echo', 'f':'foxtrot', 'g':'golf', 'h':'hotel', 'i':'india', 'j':'juliet', 'k':'kilo', 'l':'lima', 'm':'mike', 'n':'november', 'o':'oscar', 'p':'papa', 'q':'quebec', 'r':'romeo', 's':'sierra', 't':'tango', 'u':'uniform', 'v':'victor', 'w':'whiskey', 'x':'xray', 'z':'zulu'}
+
+def milPhone(str1):
+    if str1.isalpha() == False:
+        return 'Argument must only be letters'
+    else:
+        lst=[]
+        for let in str1:
+            lst.append(milDict[let])
+        x = ' '.join(lst)
+        return x
+        
+Define a function called uniqueChar that takes one parameter (a string).  The function should return a list of non-case sensitive characters that occur in the parameter, however each character should appear only once in the list.  The list should be sorted in ascending order and only contain lowercase characters.
+
+def uniqueChar(str1):
+    str2 = str1.lower()
+    x = list(str2)
+    setx = set(x)
+    lst = list(setx)
+    return sorted(lst)
+    
+Define a function called compareVals that takes a variable number of parameters (which should be integers) and one keyword parameter called com whose default value is 0.  Then check each value in the variable number of parameters and if the value is not an integer, then the function should return the string Incorrect value.  Otherwise compare each value in the variable number of parameters to the the keyword parameter value.  If the value is strictly greater than the keyword value then add it to a list. Return the list of strictly greater values.
+
+def compareVals(*args,com=0):
+    for arg in args:
+        if isinstance(arg,int)==False:
+            return 'Incorrect value'
+        else:
+            lst=[]
+            for arg in args:
+                if arg > com:
+                    lst.append(arg)
+    return lst
+    
+Create a class called Book.  Each book should have a title, an author, year published, number of pages, and status of read or not read.  When creating a book, the user provides the title, author, year published, and number of pages.  By default the status should be set to Not Read.  Create a method called markRead that sets a book's status to Read.  If a user prints an instance of Book the output should be in the form:
+Title (Year) by Author: Status (Pages)
+
+class Book:
+    def __init__(self,title,author,yearpub,pages,status='Not Read'):
+        self.title = title
+        self.author = author
+        self.yearpub = yearpub
+        self.pages = pages
+        self.status = status
+    def markRead(self):
+        self.status = 'Read'
+    def __str__(self):
+        return(f'{self.title} ({self.yearpub}) by {self.author}: {self.status} ({self.pages})')
+
+Write a program that accepts input from the user.  The input will be consist of an integer, an operator, and an integer where each is separated by a space (e.g. 3 + 3, 4 / 4, 5 * 2).  The acceptable operators are + (addition), - (subtraction), / (division), and * (multiplication). If the input is not in the correct format then output Incorrect Format (includes neither number being an integer or operator being out of place). If the input contains an invalid operator output Invalid Operator. If the mathematical operation results in an error output Error.  Otherwise output the result of the mathematical operation.
+
+int1 = input()
+
+oplst = ['+','-','/','*']
+if int1[4] == '*':
+    print ('Incorrect Format')
+elif isinstance(int(int1[0]),int)==False:
+    print ('Incorrect Format')
+elif isinstance(int(int1[4]),int) ==False:
+    print ('Incorrect Format')
+    
+elif int(int1[4]) == 0:
+    print('Error')
+elif int1[2] not in oplst:
+    print ('Invalid Operator')
+elif int1[2] == '+':
+    print (int(int1[0])+int(int1[4]))
+elif int1[2] == '-':
+    print (int(int1[0])-int(int1[4]))
+elif int1[2] == '/':
+    print (int(int1[0])/int(int1[4]))
+elif int1[2] == '*':
+    print (int(int1[0])*int(int1[4]))
+
+Define a function called fileInfo that takes one parameter (a string) which is a filename.  The function should open and read the file and then display the number of lines, words, and characters in the file. Newline and space characters should not be included in the character count.
+
+Sample output:
+Lines: 2
+Words: 10
+Characters: 32
+
+def fileInfo(fname):
+    with open(fname, 'r') as inf:
+        fc = inf.read()
+        lines = fc.split('\n')
+        charstr = ' '.join(lines)
+        wordlst = charstr.split()
+        charstr2 = ' '.join(wordlst)
+        charlst = list(charstr2)
+        charlstfin = []
+        for char in charlst:
+            if char == ' ':
+                pass
+            else:
+                charlstfin.append(char)
+        print(f'Lines: {len(lines)}\nWords: {len(wordlst)} \nCharacters: {len(charlstfin)}')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

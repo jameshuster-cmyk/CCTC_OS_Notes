@@ -1,0 +1,140 @@
+Using the with statement, open users.txt.
+Save the data found in the file users.txt into a variable named contents and then print contents
+
+with open ('users.txt', 'r') as text:
+    contents = text.read()
+    print(contents)
+    
+Using users.txt read all of the usernames into a list, where each username is in its own index. Print the list.
+
+Example list (shortened, your list should include all names found in file):
+['john.doe\n', 'jane.smith\n', 'adam.jones\n', ...]
+
+with open('users.txt', 'r') as obj:
+    lst = obj.readlines()
+    print(lst)
+    
+Using the with statement write a script to open a file named info.txt in append mode. Write the string "Python is fun" to the file.
+
+
+str1 = 'Python is fun'
+with open('info.txt', 'a') as obj:
+    obj.write(f'{str1}')
+    
+Using the provided function accomplish the following:
+Continuously read a string from the user and write that string to the file provided in the parameter fname until an empty string is read from user.
+
+Every line read from the user should be written on its own line in the file.
+
+Example:
+If the user enters three separate lines of text, then there should be three separate lines of text written to fname
+
+def gathering_thoughts(fname):
+    with open(fname, 'w') as obj:
+        while True:
+            inpoot = input()
+            if inpoot:
+                obj.write(f'{inpoot}\n')
+            else:
+                break
+                
+Using the function provided accomplish the following task: 
+Read the contents of the file path stored in infile and write the contents to the file path stored in outfile.
+
+def copy_paste(infile, outfile):
+    with open(infile, 'r') as deets:
+        infil = deets.read()
+    with open(outfile, 'w') as deez:  
+        exfil = deez.write(infil)
+        
+Using the code provided, troubleshoot and find the error(s). 
+
+Fix the code to execute properly so that it will print each line of the file on separate lines.
+
+infile can point to any test file you choose. This question will use the following file for testing purposes: file1.txt
+
+def file_read(infile):
+    with open(infile,'r') as txt:
+        fc = txt.read()
+        lines = fc.split('\n')
+        for line in lines:
+            print(f'{line}\n')
+            
+Use python to finish the function below that will perform the following:
+    Read file specified by the path stored in the inpath parameter and write all lines to the file specified by the outpath parameter.
+    Before writing out each line, add the line number starting with 1 follow by colon and space
+A test case will utilize users.txt as the inpath
+
+def linenums(inpath, outpath):
+    with open(inpath, 'r') as inf, open(outpath, 'w') as outf:
+        fc = inf.read()
+        lines = fc.split('\n')
+        counter = 1
+        for line in lines:
+            line = f'{counter}: {line}'
+            outf.write(line)
+            outf.write(f'\n')
+            counter = counter + 1
+
+"You have a artist friend that likes to jot down some inspirational words when the mood strikes. These fits of inspiration always have a theme that they need to remember with the messages. Your friend needs some help keeping track.
+
+Read each of the inspirational messages from the user and write them to the end of the file specified by fname.
+
+Since the theme is important and must be remembered, add the theme and a colon before each message and ensure each inspirational message is on its own line. An empty input will indicate no more entries and the end of the theme."
+
+Example:   log_to_file('example.txt','Razzmatazz')
+
+If theme was "Razzmatazz", and the user provided 2 inspirational messages of input as follows:
+
+"I like nonsense; it wakes up the brain cells. - Dr. Seuss"
+"Only you can control your future. - Dr. Seuss"
+
+Then the resulting strings would be written to example.txt in the following format:
+
+Razzmatazz:I like nonsense; it wakes up the brain cells. - Dr. Seuss
+Razzmatazz:Only you can control your future. - Dr. Seuss
+
+Hints:
+    What if there are multiple lines to be added? What separates lines in a file? What needs to be added to the example line above?
+    Do not overwrite the file. What mode should you open the file in?
+
+def log_to_file(fname, theme):
+    with open(fname, 'a') as inf:
+        while True:
+            message = input()
+            if message:
+                inf.write(f'{theme}:{message}\n')
+            else:
+                break
+            
+Replace all found instances of the individual tuple entries in the file found at in_path. You can use the following test file: act18_3.txt
+
+Replacements will be in the list reps as a list of tuples.
+
+Each tuple entry will contain the 'find' as the first element and the 'replace' will be the second element.
+
+Write the result to the file specified with out_path.
+
+Example: 
+
+replace_in_file('act18_3.txt', 'outpath_ex.txt', [("taken","delivered"),("cat","dog"),("outside","beyond"),("straightaway","forthwith"),("possibly","perchance")])
+
+    Contents of inpath_ex.txt - "The cat possibly needs to be taken outside, straightaway."
+    Changed string example to write to outpath_ex.txt - "The dog perchance needs to be delivered beyond, forthwith."
+    reps = [("taken","delivered"),("cat","dog"),("outside","beyond"),("straightaway","forthwith"),("possibly","perchance")]
+
+def replace_in_file(in_path, out_path, reps):
+    with open('act18_3.txt', 'r') as inf, open(out_path, 'w') as outf:
+        fc = inf.read()
+        for old, new in reps:
+            if old in fc:
+                fc = fc.replace(old, new)                
+        outf.write(fc)
+
+
+
+
+
+
+
+

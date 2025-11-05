@@ -1,0 +1,224 @@
+Write a program, that given an amount of money (in US Dollars) via standard input, calculates the smallest number of coins needed to represent the given about of money.
+
+1. For the purpose of this problem the only possible coins are quarters, dimes, nickels, and pennies.
+
+2. No dollar bills (any denomination) or dollar coins will be used.
+
+3. Assign user input to a variable. This will represent the amount of money for which to calculate the smallest number of quarters, dimes, nickels, and pennies. 
+
+4. Display the number of quarters, dimes, nickels, and pennies used, even if there are 0 used.
+
+5. Hint: To achieve the smallest number of coins, first maximize the number quarters, then dimes, and so on.
+
+Example:
+Assuming the user input is 4.41, output should be:
+Quarters: 17
+Dimes: 1
+Nickels: 1
+Pennies: 1
+
+money = float(input())
+quart = int((money)/.25)
+carry1= money- (.25 * quart)
+print(f'Quarters: {quart}')
+dimes = int((carry1)/.10)
+print(f'Dimes: {dimes}')
+carry2=carry1-(.10*dimes)
+nicks = int((carry2)/.05)
+print(f'Nickels: {nicks}')
+carry3 = carry2-(.05*nicks)
+pennies = int(carry3/.01)
+print(f'Pennies: {pennies}')
+
+Prime numbers are important in cryptography.  A number is prime if it is only divisible by itself and 1. Define a function called isPrime that takes one parameter (an integer) and returns True if the parameter is prime and False otherwise.
+
+def isPrime(inty):
+    if inty % 2 == 0:
+        return False
+    elif inty % 3 == 0:
+        return False
+    elif inty % 5 == 0:
+        return False
+    elif inty % 7 == 0:
+        return False
+    else:
+        return True
+        
+Define a function called circle takes takes one parameter (the radius of a circle). The function should print the area of the circle and the circumference of the circle on separate lines rounded to 6 decimal places. Use the value of pi from the math module in your calculations. Note the formulae to use where r is radius:
+Area=πr2
+Circumference=2πr
+
+Example output give parameter value of 10:
+Area: 314.159265
+Circumference: 62.831853
+
+import math
+
+def circle(rad):
+    area = math.pi * (rad*rad)
+    circ = 2 * math.pi * rad
+    print(f'Area: {round(area,6)}\nCircumference: {round(circ,6)}')
+    
+Define a function called listSquares that takes one parameter which is a string of space separated numbers. The function should process each number and if the number is non-negative, square the number and add it to a list.  If a negative number is encountered the function should stop processing numbers and return the list (the square of the negative number should not be included in the list). If the first number is negative, then the function should return an empty list.
+
+Example output:
+listSquares("3 6 9 10 -5 4 9 1") should return [9, 36, 81, 100]
+listSquares("-13 5 17 11 14 16 18 7") should return []
+
+def listSquares(intlst):
+    lst = intlst.split()
+    goallst = []
+    for num in lst:
+        if int(num) > 0:
+            goallst.append((int(num))*(int(num)))
+        if int(num) < 0:
+            break
+    return goallst
+ 
+Define a function called cleanString which takes two parameters.  The first parameter is a string with multiple characters. The second parameter is a one-character string. The function should remove all instances of the second parameter (case-insensitive) from the first parameter and return this new string.
+
+Example output:
+cleanString('This Is A Sentence', 'i') should return "Ths s A Sentence"
+cleanString('This Is A Sentence', 'I') should return "Ths s A Sentence"  
+
+def cleanString(par1,par2):
+    lst1 = list(par1)
+    goallst = []
+    for char in lst1:
+        if char.lower() != par2.lower():
+            goallst.append(char)
+    x = ''.join(goallst)
+    return(x) 
+    
+You are provided two sets CS and Math which contain the first names of students who are majoring in Computer Science (CS) and Mathematics (Math).  No first names are repeated, i.e. if the same first name appears in both CS and Math, that means the student is a double major.  Use set methods to find the sets of students below and print out each on a separate line.  Print the students as a list and in alphabetical order (ascending).
+a. Display all double majors
+b. Display all single majors
+c. Display all students
+d. Display all CS-only majors
+e. Display all Math-only majors
+
+CS = {'Andrew', 'Brian','John', 'Claire', 'Allison', 'Jake', 'Samantha'}
+Math = {'Samantha', 'Jake', 'Ted', 'Andrew', 'Claire', 'Mike', 'Bryce'}
+
+dubmaj = CS.intersection(Math)
+print(sorted(list(dubmaj)))
+sinlistcs = list(CS - dubmaj)
+sinlistmath = list(Math - dubmaj)
+sinmaj = sinlistcs + sinlistmath
+print(sorted(sinmaj))
+studslist = list(CS) + list(Math)
+studset= set(studslist)
+studlistclean = list(studset)
+print(sorted(studlistclean))
+print(sorted(list(CS.difference(Math))))
+print(sorted(list(Math.difference(CS))))
+
+Define a class called BankAccount.  The class should have a method that initializes an instance of BankAccount. This method should have parameters which provide values for the attributes accountNum (string), holderFirstName (string), holderLastName (string), and balance (float).  This method should also set an attribute status (bool) to  True.  While accountNum is a string, all characters should be digits.  The provided value for balance should be non-negative.  If the provided values for accountNum and balance are not correct then display the message "Account not created" and do not assign any values to the attributes.
+
+Define a method called makeDeposit that takes one parameter (a non-negative float) representing the amount of money to be deposited in the account.  If the account is closed (i.e. status is set to False) then display the message "Account is closed" and take no further action.  If the parameter value is not valid then display the message "Deposit value invalid" and take no further action.  Otherwise, update the balance attribute by adding the parameter value.
+
+Define a method called makeWithdrawal that takes one parameter (a non-negative float) representing the amount of money to withdraw from the account.  If the account is closed (i.e. status is set to False) then display the message "Account is closed" and take no further action.  If the parameter value is not valid then display the message "Withdrawal value invalid" and take no further action.  If the parameter value is valid, but is greater that then balance value, then display the message "Insufficient funds" and take no further action.  Otherwise, update the balance attribute by subtracting the parameter value.
+
+Define a method called returnBalance.  If the account is closed, it should display the message "Account closed" and take no further action.  Otherwise, return the account balance formatted correctly (with a dollar sign and two decimal places).
+
+Define a method called closeAccount.  If the account is closed, it should display the message "Account is already closed".  Otherwise, set the status attribute to False.
+
+Define a special method for displaying an object in the form:
+accountNum
+holderFirstName holderLastName
+balance
+status
+
+class BankAccount:
+    def __init__(self,accountNum, holderFirstName, holderLastName, balance, status=True):
+        if accountNum.isdigit() == True:
+            self.accountNum = accountNum
+        if accountNum.isdigit() == False:
+            print('Account not created')
+        self.holderFirstName = holderFirstName
+        self.holderLastName = holderLastName
+        if isinstance(balance, float) == False:
+            print('Account not created')
+        else:
+            if balance >= 0:
+                self.balance = balance
+            else:
+                print('Account not created')
+        self.status = status
+            
+    def makeDeposit(self, depos):
+        if self.status == False:
+            print("Account is closed")
+        elif depos < 0:
+            print('Deposit value invalid')
+        else:
+            self.balance = self.balance + depos
+    
+    def makeWithdrawal(self, withd):
+        if self.status == False:
+            print("Account is closed")
+        elif withd < 0:
+            print('Withdrawal value invalid')
+        elif withd > self.balance:
+            print("Insufficient funds")
+        else:
+            self.balance = self.balance - withd
+            
+    def returnBalance(self):
+        if self.status == False:
+            print('Account is closed')
+        else:
+            return(f'${self.balance:.2f}')
+            
+    def closeAccount(self):
+        if self.status == False:
+            print('Account is already closed')
+        else:
+            self.status = False
+            
+    def __str__(self):
+        return f'{self.accountNum}\n{self.holderFirstName} {self.holderLastName}\n${self.balance:.2f}\n{self.status}'
+        
+Ask for user input and use the response for the name of file.  Open the named file so that it truncates the file if it exists.  Continually ask for user input and write the response to the file on separate lines until the user provides an empty string as input.
+
+ filen = input()
+with open(filen, 'w+') as inf:
+    fc = inf.read()
+    size = input()
+    while size:
+        fc = inf.write(f'{size}\n')
+        size = input()
+
+Define a function called charFreq that takes one parameter which is a filename.  Open the file and read the contents.  Determine how many times each alphabetic character (case insensitive) appears in the file.  Display the alphabetic character that appears the most and the alphabetic character that appears the least with the number of times each appears in parentheses.
+
+def charFreq(fname):
+    with open(fname, 'r') as inf:
+        fc = inf.read()
+        fclower = fc.lower()
+        lowerlist = list(fclower)
+        dicty = {}
+        for char in lowerlist:
+            dicty[char] = lowerlist.count(char)
+        highkey = ''
+        highval = 0
+        lowkey = ''
+        lowval = 10000
+        for key in dicty:
+            if key.isalpha() == True:
+                if dicty[key] > highval:
+                    highval = dicty[key]
+                    highkey = key
+                if dicty[key] < lowval:
+                    lowval = dicty[key]
+                    lowkey = key
+        print(f'Most: {highkey} ({highval})')
+        print(f'Least: {lowkey} ({lowval})')
+                
+               
+        
+        
+        
+        
+        
+            
+        

@@ -1,0 +1,72 @@
+Build a simple class called Dog.
+
+The class should initialize every instance of Dog created to start with the following:
+Attribute 	Value of attribute:
+name 	Fido
+tricks 	empty list
+
+
+
+Build a function named change_name that accepts a parameter. The parameter provided will be used to overwrite the dog's initialized name.
+
+Build another function named new_trick that accepts a parameter. The parameter should be appended to the empty list of tricks that each dog is initialized with.
+
+Build a conversion to string function (hint: Think of the double underscore) that returns a string in the following format:
+"My dog's name is __. __ can perform the following tricks: __"      (NOTE: Fill in the blank lines with the dog name and list of tricks)
+
+class Dog:    
+    def __init__(self, name='Fido', tricks=[]):
+        self.name= name
+        self.tricks= tricks
+    def change_name(self, name):
+        self.name = name
+    def new_trick(self, trick):
+        self.tricks.append(trick)
+    def __str__(self):
+        return(f"My dog's name is {self.name}. {self.name} can perform the following tricks: {self.tricks}")
+        
+Create a class called Car. When initializing a Car instance, the user must provide the year, make, model, color, trim, and transmission type, in that order. The class should also include a conversion to string function that returns a string formatted in the example output provided below (NOTE: the format must be the same to include all whitespaces).
+
+For example, calling car1 = Car('2024','Honda','Civic','White','EX','Automatic')
+
+and 
+
+print(car1) should return:
+
+Year: 2024
+Make: Honda
+Model: Civic
+Color: White
+Trim: EX
+Transmission: Automatic
+
+class Car:
+    def __init__(self, year, make, model, color, trim, transmission):
+        self.year = year
+        self.make= make
+        self.model = model
+        self.color = color
+        self.trim = trim
+        self.transmission = transmission
+    def __str__(self):
+        return(f'Year: {self.year}\nMake: {self.make}\nModel: {self.model}\nColor: {self.color}\nTrim: {self.trim}\nTransmission: {self.transmission}')
+        
+Create a class named Chest that can store a large number of items in to a list for an explorer. When initializing a Chest instance, it can store a variable number of items. The chest has a function called add that can store an additional random number of items. It also has a function called drop that can remove a variable number of items from the chest. The empty function removes all the items inside the chest. When you print the chest instance, it will return Chest: [itemX, itemY, itemZ].
+
+For example, by calling chest1 = Chest('swords', 'bows', 'daggers') and then print(chest1), it will return Chest: ['swords', 'bows', 'daggers'].
+
+class Chest:
+    def __init__(self, *items):
+        self.items = list(items)
+    def add(self,*item):
+        self.items.extend(item)
+    def drop(self,*items):
+        for item in items:
+            if item in self.items:
+                self.items.remove(item)
+    def empty(self):
+        self.items.clear()
+    def __str__(self):
+        return(f'Chest: {self.items}')       
+        
+

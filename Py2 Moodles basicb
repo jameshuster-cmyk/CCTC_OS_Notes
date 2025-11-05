@@ -1,0 +1,241 @@
+PYTHON 2 MOODLEs
+
+Store the following values in the corresponding variables and print them one by one. 
+Variable Name 	Value
+s 	"string example"
+x  	20
+y 	20.0
+
+s= "string example"
+x= 20
+y= 20.0
+
+print(s)
+print(x)
+print(y)
+
+Create a variable called x and store 1000 in it. Create another variable called y and store 582 in it. Create a third variable called z with the value x - y. Print z.
+
+x = 1000
+y = 582
+z = (x-y)
+
+print(z)
+
+Create a variable s and store the string "Python" in it. Multiply the string by 10 and print the result
+
+s= "Python"
+print(s*10)
+
+Given the following variables, add them together and store the value in z, print z. 
+x = 20
+y = 10
+
+x = 20
+y= 10
+
+z = (x+y)
+print(z)
+
+Using the type() and print() functions, print what type 50 is in python.
+
+print(type(50))
+
+Print the boolean value of 1
+print(True)
+
+Given x as a string, convert it to an integer and multiply it by 10. Store the results of the multiplication into another variable of your choosing and then print it.
+ 
+Next, convert the answer back into a string and use the type() function to print what type of object is stored in the variable after the conversion has been performed.
+
+x = '20'
+var1 = int(x) * 10
+print(var1)
+var2 = str(var1)
+print(type(var2))
+
+Assign the following two lists to any variable names you like. Add the two lists together and print the combination.
+
+[1,2,3,4,5]
+["hi","hello","hey"]
+
+list1 = [1,2,3,4,5]
+list2 = ["hi","hello","hey"]
+print(list1 + list2)
+
+How can you use python list indexing to print the 7th item of the following list?
+li = [1,"two",3,"four",5,"six",7,"eight"]
+
+print(li[6])
+
+Using the built in .count() function/method, print how many 3s are in the following tuple:
+tup = (1,2,3,3,4,5,3,3,5,3,4,3,3,3,2,3,33,3,3,33,3,4,5,6,77,6,6,5,54,4,3,3,32,2,2,23)
+
+tup = (1,2,3,3,4,5,3,3,5,3,4,3,3,3,2,3,33,3,3,33,3,4,5,6,77,6,6,5,54,4,3,3,32,2,2,23)
+print(tup.count(3))
+
+Extend the following list lst1 to the given tuple tup1. Print the tuple.
+lst1 = [1,2,3,4,5] 
+tup1 = ("one","two","three","four","five")
+Hint:  Are tuples mutable? 
+One more hint: Are you printing a tuple or a list?
+
+lst1 = [1,2,3,4,5]
+tup1 = ("one","two","three","four","five")
+combo = tup1 + tuple(lst1)
+print(combo)
+
+Using a string method, write a script to convert the following string to a list where each word is located in its own index. Print the list.
+
+Example:
+string = "Turn this into a list."
+Output:  ['Turn', 'this', 'into', 'a', 'list.']
+
+string = "Turn this into a list."
+lst1 = string.split()
+print(lst1)
+
+Change the 3rd index of the given list li to the letter 't'. Then use a string method to convert it into a single string and print it.
+
+li = ["F","e","e","d"]
+li[3] = "t"
+var1 = "".join(li)
+print(var1)
+
+Replace the letter a, with b. Count how many b's are in the string.
+string: "abbbabbbaaaabaabaababcabababaaabaababcabababbabbbcaabababacbababababababababababa"
+
+string = "abbbabbbaaaabaabaababcabababaaabaababcabababbabbbcaabababacbababababababababababa"
+x = string.replace("a" , "b")
+y = x.count("b")
+print(y)
+
+Use python to produce code below that will create several named variables with the specified value:
+Variable 	Value 	Type
+hello 	"hello" 	string
+is_python_awesome 	True 	boolean
+days_in_python 	6 	integer
+pie_size 	3.14 	float
+
+After creating all variables and assigning their value, print each variable on a separate line
+
+hello = "hello"
+is_python_awesome = bool(True)
+days_in_python = 6
+pie_size = 3.14 
+print(hello)
+print(is_python_awesome)
+print(days_in_python)
+print(pie_size)
+
+Use Python code to create the following variables. Those variables will be assigned the Starting Value as seen in the table below. 
+
+After assigning each Variable with a Starting Value, use Python Built-in Functions to perform the conversion designated in the Convert to Type column.
+Variable 	Starting Value 	Convert to Type
+int_input 	"345" 	integer
+pi_4 	"3.1415" 	float
+hours_str 	40 	string
+hourly_rate 	15 	float
+
+After assigning all variables and performi
+
+int_input = '345'
+int_input = int(int_input)
+print(int_input)
+pi_4 = '3.1415'
+pi_4 = float(pi_4)
+print(pi_4)
+hours_str = 40
+hours_str = str(hours_str)
+print(hours_str)
+hourly_rate = 15
+hourly_rate = float(hourly_rate)
+print(hourly_rate)
+
+Use python to produce code below that will create several named variables with the specified value using math operators:
+Variable 	Value 	Type
+x 	16 	integer
+y 	3 	integer
+xysum 	sum of x and y 	integer
+xydiff 	difference of x and y 	integer
+xyprod 	product of x and y 	integer
+xyquo 	quotient of x and y 	float
+xyintquo 	integer quotient of x and y 	integer
+xymod 	modulus of x and y 	integer
+
+After assigning all variables and performing the assigned math operations print each variable on a separate line in the order they appear in the table.
+
+x = 16
+y = 3
+xysum = x+y
+xydiff = x-y
+xyprod = x*y
+xyquo = x/y
+xyintquo = int(x/y)
+xymod = x % y
+print(xysum)
+print(xydiff)
+print(xyprod)
+print(xyquo)
+print(xyintquo)
+print(xymod)
+
+Use python to produce code below that will perform the following:
+    Create a variable named sentence and assign the value 'good for all'
+    Turn the sentence variable into a list of individual characters and assign this to a variable named sent_list.
+    Change the first (index 0) character in the list to 'f'
+    Change the last (index -1) character in the list to '?'
+    Combine the list into a new string with periods ('.') in between each character and assign the result to a new variable named output.
+    Print output
+
+sentence = 'good for all'
+sent_list = list(sentence)
+sent_list[0] = 'f'
+sent_list[-1] = '?'
+output = '.'.join(sent_list)
+print(output)
+
+Use python to produce code below that will perform the following:
+
+    Create a variable named user_input that will read multiple numbers separated by spaces on the same line from the user.
+        An example input may be:1 2 3 4
+    Update user_input to change all spaces to a plus sign.
+    Print the resulting string stored in user_input to the user.
+
+user_input = input()
+user_input = user_input.replace(" ","+")
+print(user_input)
+
+Use python to produce code below that will:
+    Given an email address in email
+    Convert the email into a list named lst
+    The list will contain all individual parts of the email
+    Example: email = 'alan.m.turing@genius.com' -> lst = ['alan','m','turing', 'genius', 'com']
+
+email = 'alan.m.turing@genius.com'
+email = email.replace("@",".")
+lst = email.split(".")
+print(lst)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

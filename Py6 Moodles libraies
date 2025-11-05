@@ -1,0 +1,13 @@
+Use Python's math library to access the value of PI and print it.
+
+import math
+x = math.pi
+print(x)
+
+Complete the function below to return a randomly chosen item from the given lst
+Example function call: grab([1,2,3,4])
+
+def grab(lst):
+    import random
+    x = random.choice(lst)
+    return(x)

@@ -1,0 +1,227 @@
+myList is a list. Using the provided function signature, return every other item in myList.
+
+def everyOtherItem(myList):
+    return myList[::2]
+    
+In a research and development database, record identifiers are formatted with a 3 character code representing a department, followed by the 5 digit employee id that made the entry, and ends in the subject category.
+Create a function IDextractor that takes a string recordID and returns the employee id.
+
+def IDextractor(recordID):
+    return recordID[3:8]
+    
+myList contains a sequence of iterables. Print the length of the last item multiplied by the length of the first item.
+
+print(len(myList[-1]) * len(myList[0]))
+
+Call the built in length function with ("Bob", 32, "John", 64).
+
+len(("Bob",32,"John",64))
+
+Define the function FreeRange(start, stop). The function returns a range specified by the parameters with a step of +1 if start < stop. Otherwise the function returns a range with a step of -1 if start > stop
+
+def FreeRange(start, stop):
+    if start < stop:
+        return range(start,stop)
+    else:
+        return range(start,stop,-1)
+        
+Create a range that correlates to valid indexes in mySequence. (HINT: How do you find how long a sequence is?) You do not need to define mySequence.
+
+print(range(len(mySequence)))
+
+You are given a sequence of items in the variable mySequence. Create and print a range object that would include every other index from the start of the sequence to the end. (HINT: how long is sequence?) You do not need to define mySequence.
+
+Example: 
+mySequence = [0,1,2,3,4,5]
+
+Should print:
+range(start, stop, step)     NOTE: The start, stop, and step should be filled in with the correct value to 
+
+NOTE: The number of items in mySequence will be different with every test case. Your code should be dynamic enough to accommodate a varying number of items in the sequence. The sequence could be a list, a string, or any other collection of items.
+
+x = len(mySequence)
+print(range(0,x,2))
+
+Define a function BillSummary() that repeatedly reads input from the user until the user hits return with no text input. Each line the user enters is a 3 character material code and a cost separated by a space. The function returns the grand total.
+
+Example:
+BillSummary()
+
+With the following 2 input strings:
+'AGR 1020.00'
+'THG 3040.00'
+
+Returns:
+4060.0
+
+def iCanCount(good):
+    count = 0  # Initialize the counter outside the loop
+    for letter in good:
+        if letter == 't':
+            count += 1
+    return count  # Return the final count after the loop is finished
+
+def BillSummary():
+    total = 0
+    while True:
+        order = input()
+        if order == '':
+            break
+        else:
+            total = float(order[4:]) + total
+    return total
+
+Define a function BillSummary(items) that takes items as a list of tuple pairs. The first index in each pair is a material as a string, the second item is a total cost for that material as a float. For each item in items print material: total ensuring 2 decimal places. At the end of the loop, return the grand total (which is also a string formatted to ensure 2 decimal places).
+
+Example Input:
+BillSummary([('2x4',6000.00),('drywall',20000.00)])
+
+Example Output:
+2x4: $6000.00
+drywall: $20000.00
+26000.00
+
+def BillSummary(items):
+    total = 0
+    for material, cost in items:
+        print(f'{material}: ${cost:.2f}')
+        total = total + cost
+    return (f'{total:.2f}')
+
+Use python to finish the function below that will perform the following:
+    Read multiple lines from the user on standard input until an empty string is read.
+    Return a list of all these lines
+    Each line should be reversed from how it is read in.
+
+Example:   If the following inputs were collected:
+hello
+hi
+bye
+goodbye
+The list returned should be:  ['olleh', 'ih', 'eyb', 'eybdoog']
+
+def reverseit():    
+    bloblist = []
+    while True:
+        blob = input()
+        if blob == '':
+            break
+        bloblist.append(blob[::-1])
+    return bloblist
+
+Use python to complete the function below that will perform the following:
+    Given a mixed case string as parameter s
+    Capitalize every letter with an even index within the string.
+    Lowercase every letter with an odd index within the string.
+    Return the resulting string.
+    Example:
+        leetString("ABCDEF ghijkl")
+        Return: "AbCdEf gHiJkL"
+        
+def leetString(s):
+    result = []
+    for ind, char in enumerate(s):
+        if ind % 2 == 0:
+            result.append(char.upper())
+        else:
+            result.append(char.lower())            
+    return ''.join(result)
+nu
+Use python to finish the function below that will perform the following:
+    First, print out every even number on a separate line from provided parameter first to parameter last, inclusive.
+    Next, print out every odd number from first to last, inclusive.
+
+def evensandodds(first, last):    
+    for num in range(first, last + 1):
+        if num % 2 == 0:
+            print(num)
+    for num in range(first, last +1):
+        if num % 2 != 0:
+            print(num)
+
+Use Python to finish the function below to read strings from a user until the user enters an empty string. The strings should be stored into a list that will be returned when the user enters an empty string.
+
+Example: 
+If the following strings are read from the user:
+this
+is
+a
+test
+The returned list would be:
+['this', 'is', 'a', 'test']
+
+def user_io():
+    lst = []    
+    while True:
+        usrinput = input()
+        if not usrinput:
+            break        
+        lst.append(usrinput)        
+    return lst
+
+def user_io():
+    lst = []
+    strg = input()
+    while strg:
+        lst.append(strg)
+        strg = input()
+    return lst
+    
+Use Python to complete the function below to return a tuple of the multiples of 10 from 1 to 1000 inclusive.  
+    
+def make_tuple():
+    return(tuple(range(10,1001,10)))    
+    
+Use Python to finish the function below to return a tuple of the given list (lst) split into two equally sized halves.
+The given list will always consist of an even number of elements.
+
+Example 1:
+disect([1, 2, 3, 4])
+Returns:  ([1, 2], [3, 4])
+Example 2:
+disect(['hello', 'world!'])
+Returns: (['hello'], ['world!']) 
+
+def disect(lst):
+    midpoint = len(lst) // 2
+    return(lst[:midpoint:1],lst[midpoint::1])
+    print(midpoint)  
+    
+Use Python to finish the function below to return a copy of the given string (strng) reversed 
+
+def reverse_string(strng):
+    return(strng[::-1])   
+    
+Complete the function, round_to_position, which takes a list of floats and returns a new list with the original floats each rounded to the number of digits of precision after the decimal point corresponding to the original float's position in the list.
+
+Example:
+round_to_position([1.999, 1.0993, 1.01999, 1.012999]
+Returns: [2.0, 1.1, 1.02, 1.013]  
+    
+def round_to_position(lst):    
+    rounded_list = []    
+    for index, num in enumerate(lst):        
+        roundednum = round(num,index)
+        rounded_list.append(roundednum)        
+    return rounded_list
+    
+Define the function MatrixProduct(matrix, multiplier) where matrix is a nested list and multiplier is a number.
+The function should multiply each individual item found inside matrix by the multiplier and then return the updated matrix
+
+Example:
+MatrixProduct([[1,2,3],[4,5,6],[7,8,9]],2)
+
+Returns: 
+[[2, 4, 6], [8, 10, 12], [14, 16, 18]]   
+
+def MatrixProduct(matrix, multiplier):
+    for lst in range(len(matrix)):
+        emplst = []
+        for value in matrix[lst]:
+            value = value * multiplier
+            emplst.append(value)
+        matrix[lst] = emplst
+    return matrix
+    
+    
+

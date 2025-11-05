@@ -1,0 +1,265 @@
+Given a function that takes two string parameters, (first_name, last_name), print out the two parameters as a single string with the first letter of each being capitalized. The parameters should be separated by a space.   
+
+def fullname(first_name, last_name):
+    print(f'{first_name.capitalize()} {last_name.capitalize()}')
+    
+In a function that takes 3 string parameters, name, greeting, time, print the output using the str.format member function or the f-string. The output must use the same boilerplate text as shown below and include the appropriate values assigned to the three parameters.
+
+boilerplate text: Hello __! __, will you be arriving by __?
+
+NOTE: the __ will be filled in with the corresponding parameters as seen in the examples below
+
+def check_in(name, greeting, time):
+    print(f'Hello {name}! {greeting}, will you be arriving by {time}?')
+
+Given a function that accepts three string parameters, main_topic, subtopic, example, print to the screen a string formatted into an outline with the appropriate spacing as seen below. 
+
+main_topic will be preceded by Roman numeral 'I', a period, and a space.  ((  NOTE: 'I' is an uppercase i  ))
+
+subtopic will be preceded by lowercase 'a', a period, and a space.
+
+example will be preceded by Roman numeral 'i', a period, and a space.
+
+Example:
+
+make_outline(Computer, Software, Applications)
+
+Should print:
+
+I. Computer
+    a. Software
+        i. Applications
+        
+def make_outline(main_topic, subtopic, example):
+    print(f'I. {main_topic}\n\ta. {subtopic}\n\t\ti. {example}')
+    
+Given a function with two string parameters, name, year, print to the screen a message telling the user how old the name will be in the year 2099. Note: the year provided is the birth year.
+
+Example:
+getting_old('James', 1999)
+
+Should print the following message:
+James will be 100 in the year 2099.
+
+def getting_old(name, year):
+    var1 = int(2099 - year)
+    print(f'{name} will be {var1} in the year 2099.')
+    
+Given a function that has two integer parameters, number, length, return to the screen a string formatted to pad zeros to the left of the number. The total number of characters should be equal to the length.
+
+Example:
+zero_pad_number(2, 5)
+
+Should return:
+'00002'
+
+def zero_pad_number(number, length):
+    return str(number).zfill(length)
+
+Given a function with two string parameters, vowel, word, return either True if the vowel exists in the word or False if not.
+NOTE: You will need to use a Python keyword in order to check. 
+
+Example:
+ V_for_Vowel('a', 'apple')
+
+Should return:
+True
+
+def V_for_Vowel(vowel, word):
+    return(vowel in word)
+
+Given a function that takes two parameters, vowel: str, word: str, return to the screen either True or False if the case-insensitive vowel exists in the case-insensitive word.
+
+Example:
+ V_for_Vowel('a', 'PEAR')
+
+Should return:
+True
+
+def V_for_Vowel(vowel, word):
+    if vowel.lower() in word.lower():
+        return(True)
+    elif vowel.lower() not in word.lower():
+        return(False)
+
+Given a function and one parameter, word: str, print to the screen a single string containing the third, fifth, and seventh character of the string.
+
+Assume the word parameter will be at least seven characters long. 
+
+def bang(word):
+    print(f'{word[2]}{word[4]}{word[6]}')
+
+Given a function that takes two parameters, (lst: list[int], num: int), return True if the num is in the lst, otherwise return False. 
+For example:
+is_it([1,2,4,5,6], 2)
+
+Returns:  True
+
+def is_it(lst,num):
+    if num in lst:
+        return(True)
+    elif num not in lst:
+        return(False)
+Create a function named is_greater. The function should take two integers as parameters. The function should return True if the first parameter is greater than the second parameter, if not return False.
+
+For example:
+is_greater(5, 7) Returns:  False
+is_greater(110, 20) Returns: True
+
+def is_greater(int1,int2):
+    if int(int1) > int(int2):
+        return(True)
+    else:
+        return(False)
+
+Create a function named is_even that takes one integer as a parameter. The function will return True if the integer is even or False if not.
+For example:
+is_even(4) Returns: True
+is_even(-103) Returns: False
+
+def is_even(int1):
+    if int1 % 2 == 0:
+        return True
+    else:
+        return False
+
+Create a function named is_odd that takes one integer as a parameter. The function will return True if the integer is odd or False if not.
+
+For example:
+is_odd(4) Returns: False
+is_odd(-103) Returns: True
+
+def is_odd(int1):
+    if int(int1) % 2 != 0:
+        return True
+    else:
+        return False
+
+Create a function named is_divisible that takes two integers as a parameters. The function will return True if the first parameter is divisible by the second parameter, else False.
+For example:
+is_divisible(12,4) Returns: True
+is_divisible(25, 3) Returns: False
+
+def is_divisible(int1,int2):
+    if int1 % int2 == 0:
+        return True
+    else:
+        return False
+        
+Create a function named even_future that takes two integers as parameters. The function should evaluate if the product of the parameters are even or not. Return a string that reads: "param1 * param2 is even." or "param1 * param2 is odd."
+
+For example:
+even_future(4,5) Returns: 4 * 5 is even.
+even_future(21,3) Returns: 21 * 3 is odd.       
+        
+def even_future(int1,int2):
+    prod1 = int1 * int2
+    if prod1 % 2 == 0:
+        return f'{int1} * {int2} is even.'
+    else:
+        return f"{int1} * {int2} is odd."      
+
+Create a function named largest_list that takes two parameters, both will be lists of integers. The function should return the list that has the largest sum.
+
+For example: 
+largest_list([1, 2, 3], [4, 5, 6]) Returns: [4,5,6]
+largest_list([40, 50, 60], [10, 20, 30]) Returns: [40, 50, 60]
+
+def largest_list(lst1,lst2):
+    if sum(lst1) > sum(lst2):
+        return lst1
+    else:
+        return lst2
+
+Create a function named same_letter that takes two strings and an integer for a total of three parameters. The function should return a character if it is found at the same index in both strings. Else, return the string, "Letters not the same.". 
+
+For example:
+same_letter("feet", "beat", 1) -> "e"
+same_letter("four", "door", 2) -> "Letters not the same."
+
+def same_letter(str1,str2,int1):
+    if str1[int1] == str2[int1]:
+        return(str1[int1])
+    else:
+        return 'Letters not the same.'
+
+You will NOT be defining a function to solve this challenge
+FizzBuzz is an interview question that is said to filter out 99.5% of programming job candidates.
+- Add code so that it reads a number from a user and is stored in a variable called num
+- If num isn’t divisible by 3 or 5 then print num
+- If num is a multiple of 3 print 'fizz'
+- If num is a multiple of 5 print 'buzz' 
+    If num is a multiple of 3 and 5 print 'fizzbuzz'
+
+num = int(input())
+
+if num % 3 == 0 and num % 5 == 0:
+    print('fizzbuzz')   
+elif num % 3 == 0:
+    print('fizz')
+elif num % 5 == 0:
+    print('buzz')
+else:
+    print(num)
+
+
+
+Read input from the user stored in the variable num_input, the input will be an integer.
+Determine which of the following categories num_input fits into an print this to the user:
+        Negative Even
+        Negative Odd
+        Zero
+        Positive Even
+        Positive Odd
+num_input = int(input())
+
+if num_input > 0 and num_input % 2 == 0:
+    print('Positive Even')
+elif num_input > 0 and num_input % 2 != 0:
+    print('Positive Odd')
+elif num_input < 0 and num_input % -2 == 0:
+    print('Negative Even')
+elif num_input < 0 and num_input % -2 != 0:
+    print('Negative Odd')
+else:
+    print('Zero')       
+
+Use python to produce code below that will perform the following:
+    Create a function named domath that will accept 3 parameters.
+    The function will add the first two parameters and multiply this sum by the third parameter.
+    You can select the variables for each of the parameters.
+    The resulting product will be returned to the caller.
+
+def domath(int1,int2,int3):
+    product = (int1+int2)*int3
+    return product
+
+Complete the function below to return the type of the parameter as a string.
+
+Possible types and what they should return:
+Data Type 	Literal string to return:
+String 	string
+Boolean  boolean 
+Integer 	integer
+Float 	float
+List 	list
+Tuple 	tuple
+Any other type of object 	unknown
+
+def get_type_str(obj):    
+    if isinstance(obj, str):
+        return'string'
+    elif isinstance(obj, bool):
+        return'boolean'
+    elif isinstance(obj, int):
+        return'integer'
+    elif isinstance(obj, tuple):
+        return'tuple'
+    elif isinstance(obj, list):
+        return'list'
+    else:
+        return'unknown'
+
+
+
+

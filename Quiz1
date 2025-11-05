@@ -1,0 +1,169 @@
+Define a function named q1 that takes one parameter floatstr, which is a comma separated string of floats,  and return a list with each of the floats in the argument as elements in the list.
+
+Example:
+
+q1('1.2,5.4,9.8,5.7')
+
+Returns:  [1.2, 5.4, 9.8, 5.7]
+
+def q1(floatstr):
+    final = floatstr.split(',')
+    floatlst = []
+    for number in final:
+        floatlst.append(float(number))
+    return floatlst
+    
+Complete the function q2 which takes one parameter (a list of integers) and returns the average of all the arguments as a float.
+
+Example: 
+
+q2([3,4,9,10,5,80,9])
+
+Returns: 17.142857142857142
+
+def q2(args):
+    divid = len(args)
+    total = 0
+    for num in args:
+        total = total + num
+    return(total/divid)
+    
+Complete the function q3 which takes two parameters: a list (lst) and a number of items (n),  and returns a new list containing the last n entries in lst.
+
+Example: 
+q3(['one','two','three','four'],2)
+ 
+Returns: ['three', 'four']
+
+def q3(lst,n):
+    slimlst = []
+    length = len(lst)
+    startind = length - n
+    for ind in range(len(lst)):
+        if ind >= startind:
+            slimlst.append(lst[ind])
+    return slimlst
+    
+Complete the function q4 which takes one parameter (a string) and return a list containing the ordinal numbers of each character in the string in the order found in the parameter string.
+
+Example:
+
+q4('hello')
+
+Returns: [104, 101, 108, 108, 111]
+
+def q4(strng):
+    lst = list(strng)
+    ordlist = []
+    for char in lst:
+        ordlist.append(ord(char))
+    return ordlist
+    
+Complete the function q5 which takes one parameter (a string) and return a tuple with each element in the tuple containing a single word from the parameter string in order.
+
+Example:
+
+q5('this is a test')
+
+Returns: ('this', 'is', 'a', 'test')
+
+def q5(strng):
+    lst = strng.split()
+    tup = tuple(lst)
+    return tup
+    
+Complete the function q6 which takes two parameters: a dictionary (catalog) whose keys are product names and values are product prices per unit and a list of tuples (order) of product names and quantities, computes and returns the total value of the order.
+
+Using this catalog:
+
+catalog = {'AMD Ryzen 5 5600X': 289.99,'Intel Core i9-9900K': 363.50,'AMD Ryzen 9 5900X': 569.99}
+
+And this order:
+
+order = [('AMD Ryzen 5 5600X', 5), ('Intel Core i9-9900K', 3)]
+
+Example:
+
+q6(catalog, order)
+
+Returns: 2540.45
+
+How the above result was computed:
+
+(289.99 * 5) + (363.50 * 3
+
+def q6(catalog, order):
+    total = 0
+    for product, quant in order:
+        total = catalog[product] * quant + total
+    return total  
+    
+Complete the function q7 which takes one parameter: a string representing a filename (filename), opens the file and returns the length of the first line in the file excluding the line terminator. Use file1.txt as a test case.
+
+Example: 
+
+q7('file1.txt')
+
+Returns: 65
+
+def q7(filename):
+    with open(filename, 'r') as inf:
+        fc = inf.read()
+        lines = fc.split('\n')
+        return(len(lines[0
+        
+Complete the function q8 which takes two parameters: a filename and a list: lst, writes each entry from the list to the file on separate lines until a case-insensitive entry of "stop" is found in the list. If "stop" is not found in the list, write the entire list to the file on separate lines. Each time the function executes, it overwrites the file.
+
+def q8(filename,lst):
+    with open(filename, 'w') as inf:
+        #fc = inf.read()
+        for line in lst:
+            if line == 'Stop':
+                break
+            if line == 'stop':
+                break
+            else:
+                fc=inf.write(f'{line}\n')
+                
+Complete the function q9 which takes one parameter: an integer (miltime) representing military time and returns a string containing the greeting of the day.
+
+    0300-1159 "Good Morning"
+    1200-1559 "Good Afternoon"
+    1600-2059 "Good Evening"
+    2100-0259 "Good Night"
+
+NOTE: the actual time 0305 would be entered as 305 into the function
+
+def q9(miltime):
+    if 300 <= miltime <=1159:
+        return 'Good Morning'
+    if 1200 <= miltime <= 1559:
+        return 'Good Afternoon'
+    if 1600<= miltime <= 2059:
+        return 'Good Evening'
+    else: 
+        return 'Good Night'
+        
+Complete the function q10 which takes one parameter: numlist (a list of numbers) and returns True if all numbers in the list are NOT negative. If any numbers in the list are negative, return False.
+
+Example:
+
+q10([1,2,3,4,5,6])
+
+Returns: True
+
+Example 2:
+
+q10([1,2,3,4,-5,6,7])
+
+Returns: False
+
+def q10(numlist):
+    for num in numlist:
+        if num > 0:
+            continue
+        if num < 0:
+            return False
+        else:
+            break
+    return True

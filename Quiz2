@@ -1,0 +1,168 @@
+Complete the function q1 which takes one parameter: a string of multiple words separated by single spaces and print a new string with the sentence reversed. The words themselves should remain as they are.
+
+For example, given 'it is accepted as a masterpiece on strategy', the printed string should be 'strategy on masterpiece a as accepted is it'.
+
+def q1(sentence):
+    x = sentence.split()
+    x.reverse()
+    z = ' '.join(x)
+    print(z)
+
+Complete the function q2 which takes one parameter: a positive integer and print its string representation with commas separating groups of 3 digits.
+
+For example, given 65535 the printed string should be '65,535'.
+
+def q2(n):
+    print(f'{n:,}')
+    strang = str(n)
+    lst = list(strang)
+    #print(lst)
+    if len(lst) == 5:
+            lst.insert(-3,',')
+            x = ''.join(lst)
+            #print (x)
+    if len(lst) == 9:
+            lst.insert(-3,',')
+            lst.insert(-7,',')
+            y = ''.join(lst)
+            #print(y)
+            
+Complete the function q3 which takes two parameters: two lists of integers and print a sorted list that contains all integers from both lists in descending order.
+
+For example, given [3,4,9] and [8,1,5] the returned list should be [9,8,5,4,3,1]. The printed list may contain duplicates.
+
+def q3(lst0, lst1):
+    goallst = []
+    for num in lst0:
+        goallst.append(num)
+    for num in lst1:
+        goallst.append(num)
+    x= sorted(goallst, reverse=True)
+    print(x)
+ 
+Complete the function q4 which takes three parameters representing 3 scores and print 'GO' if the average score is greater than 50. Otherwise print 'NOGO'.
+
+def q4(s1,s2,s3):
+    if (s1+s2+s3)/3 > 50:
+        print('GO')
+    else:
+        print('NOGO')
+        
+Complete the function q5 which takes two parameters: integer and limit, and print a list of multiples of the integer up to and including the limit.
+
+For example, if integer = 3 and limit = 30, the printed list should be [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30]. Note, 0 is a multiple of any integer except 0 itself.     
+
+def q5(integer, limit):
+    print(list(range(0,limit+1,integer)))
+    
+Complete the function q6 which takes two parameters (representing two filenames) and return a list whose elements consist of line numbers for which the two files differ. The first line is considered line 0.
+
+For example, using the following files: test1.txt and test2.txt should return [2, 4]
+
+def q6(file1, file2):
+    with open(file1, 'r') as inf1,open(file2,'r') as inf2:
+        fc1 = inf1.readlines()
+        fc2 = inf2.readlines()
+        finallst=[]
+        for ind, line in enumerate(fc1):
+            if line != fc2[ind]:
+                finallst.append(ind)
+    return finallst
+    
+Complete the function q7 which takes one parameter (a list), iterates through the given list, and returns the first duplicate value you come across.
+
+For example, if given [5,7,9,1,3,7,9,5], the returned value should be 7.
+def q7(lst):
+    testlst = []
+    for num in lst:
+        if num not in testlst:
+            testlst.append(num)
+        else:
+            return(num)
+            
+Complete the function q8 which takes one parameter: a string representing a sentence with words being separated by a single space, and return the length of the shortest word. There is no punctuation in the sentence.
+
+Example:
+
+strng = "What is the length of the shortest word in this sentence"
+
+def q8(strng):
+    lst = strng.split()
+    sortedlist = sorted(lst, key=len)
+    return(len(sortedlist[0]))
+    
+Complete the function q9 which takes one parameter (an alphanumeric string), and return the character whose ascii value is that of the integer representation of all of the digits in the string concatenated in the order in which they appear.
+
+For example, given 'hell9oworld7', the returned character should be 'a' which has the ascii value of 97.
+
+def q9(strng):
+    lst = list(strng)
+    #print(lst)
+    numbalist = []
+    for item in lst:
+        if item.isdigit() == True:
+            numbalist.append(item)
+    x= ''.join(numbalist)
+    y= int(x)
+    z= chr(y)
+    return(z)
+    
+Complete the function q10 which takes one parameter (a list of positive integers sorted in ascending order), and return the first non-consecutive value. If all values are consecutive, return 'All are sequential'.
+
+For example, given [1,2,3,4,6,7], the returned value should be 6.   
+
+def q10(arr):
+    
+    counter = 0
+    for ind in range(len(arr)): #range(len()) cycles the for loop through ind values
+        if ind != 0:
+            if arr[ind]-1 == arr[ind-1]:
+                continue
+            else:
+                return arr[ind]
+    return'All are sequential'
+            
+Create a class with specific functions
+
+    Create a class named Shoe.
+    Shoe instances should store the current state of your shoe example('The shoe is tied : True','The shoe is tied : False').
+    An additional function getstate returns the current state of the shoe.
+    Function tieshoe that will change the state of the shoe to tied or True.
+    Function untieshoe that will change the state of the shoe to untied or False.
+    The class should also respond to a conversion to string by returning the string 'The shoe is tied : ' followed by the current of the Shoe.
+
+class Shoe:
+    def __init__(self, state=False):
+        self.state = state
+    def getstate(self):
+        return self.state
+    def tieshoe(self):
+        self.state = True
+    def untieshoe(self):
+        self.state = False
+    def __str__(self):
+        return(f'The shoe is tied : {self.state}')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

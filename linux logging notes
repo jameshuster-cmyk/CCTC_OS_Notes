@@ -1,0 +1,18 @@
+logging whut 1
+Use the log file attached to this for all Whut questions.
+How many unique users logged into this machine?
+cat log.txt | grep "session opened for user" | uniq 
+count the names of unique users
+
+logging whut 2
+Identify the Cyber Attack Technique that Balrog is trying on the machine.
+cat log.txt | grep Balrog
+(trying to access the /etc/shadow and add creds)
+
+
+looging whut 5
+Analyze the file to determine when a shell was spawned as a different user and how long it was maintained for.
+find /etc/passwd -exec /bin/sh \; this command happened 2 times and is the only valid command that would open an interactive shell within the environment
+
+logging xml 5
+xpath -q -e '//host/address[following-sibling::ports/port/state[@state="open"]]/@addr | //host/ports/port[state[@state="open"]]/@portid' /home/garviel/output.xml | md5sum

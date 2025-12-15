@@ -1,0 +1,18 @@
+Recon:
+
+ID live hosts
+	- when given unknown IP, sweep whole range from current hop
+	- for i in {1..254} ;do (ping -c 1 192.168.150.$i | grep "bytes from" &) 2>/dev/null ;done
+	- Windows: for /L %i in (1,1,255) do @ping -n 1 -w 200 192.168.1.%i > nul && echo 192.168.1.%i is up.
+
+IP Open Ports
+	- from dynamic tunnnel (LINOPS terminal)
+	- against live hosts that responed to ping
+	- proxychains nmap -Pn -sT 192.168.1.2 -p 1-10000 (highest should never be over 10000)
+	- nmap -Pn -sV (use against the host/live ports detected in the previous command)
+
+Nmap script against known services
+	- /usr/share/nmap/scripts/scripts.db filename = "http-svn-enum.nse" (EXAMPLE), smb-os-discovery
+	- nmap -Pn -sT 10.50.15.67 -p 80 --script http-enum
+	- nmap -Pn -A against known running ports to pull all available information
+

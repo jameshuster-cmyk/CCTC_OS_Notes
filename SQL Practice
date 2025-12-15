@@ -1,0 +1,93 @@
+SQL walkthrough https://sqlbolt.com/
+Task 1
+SELECT Title FROM Movies;
+SELECT Director FROM Movies;
+SELECT Director,title FROM Movies;
+SELECT title,year FROM Movies;
+SELECT * FROM Movies;
+
+Task 2
+SELECT Title FROM movies
+    WHERE id = 6;
+SELECT Title FROM movies
+    WHERE year <= 2010
+    and year >= 2000;
+SELECT Title FROM movies
+    WHERE year NOT BETWEEN 2000 AND 2010;
+SELECT Title,year FROM movies
+    ORDER BY year asc
+    LIMIT 5;
+
+Task 3
+SELECT title FROM movies
+    WHERE title LIKE "%Toy Story%";
+SELECT title FROM movies
+    Where Director LIKE "%John%";
+SELECT title FROM movies
+    Where Director NOT LIKE "%John%";
+SELECT title FROM movies
+    Where title LIKE "%WALL%";
+
+Task 4
+SELECT DISTINCT director FROM movies
+    ORDER by director asc;
+SELECT title FROM movies
+    ORDER by year desc
+    LIMIT 4;
+SELECT title FROM movies
+    ORDER by title asc
+    LIMIT 5;
+SELECT title FROM movies
+    ORDER by title asc
+    LIMIT 5 OFFSET 5;
+
+Task 5
+SELECT City,population FROM north_american_cities
+    Where country LIKE "%canada%";
+SELECT City FROM north_american_cities
+    Where country LIKE "%united%"
+    ORDER BY latitude desc;
+SELECT City FROM north_american_cities
+    Where longitude < -87.629798
+    ORDER BY longitude asc;
+SELECT City FROM north_american_cities
+    Where country LIKE "%Mexico%"
+    ORDER BY population desc
+    LIMIT 2;
+SELECT City FROM north_american_cities
+    Where country LIKE "%states%"
+    ORDER BY population desc
+    LIMIT 2 OFFSET 2;
+
+Task 6
+SELECT title, Domestic_sales,International_sales FROM Movies
+    INNER JOIN Boxoffice 
+    ON movies.Id = boxoffice.Movie_id;
+SELECT title, Domestic_sales,International_sales FROM Movies
+    INNER JOIN Boxoffice 
+    ON movies.Id = boxoffice.Movie_id
+    WHERE international_sales > domestic_sales;
+SELECT title FROM Movies
+    INNER JOIN Boxoffice 
+    ON movies.Id = boxoffice.Movie_id
+    ORDER BY Rating desc;
+
+Task 7
+SELECT DISTINCT building FROM employees
+    LEFT OUTER JOIN buildings
+    ON buildings.building_name = employees.building
+    WHERE Years_employed > 0
+SELECT * FROM buildings
+SELECT DISTINCT (building_name), role FROM buildings
+    LEFT JOIN employees
+    ON  employees.building = buildings.building_name;
+
+Task 8
+SELECT Name,role FROM employees
+    WHERE Building is null;
+SELECT DISTINCT building_name FROM buildings
+    LEFT OUTER JOIN employees
+    ON buildings.building_name = employees.building
+    WHERE Years_employed IS  NULL
+
+Task 9

